@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class WelcomeViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
@@ -15,7 +16,10 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         titleLabel.text = ""
+
         var charIndex = 0.0 // This variable is helping us to change the timer interval so that it take accounts a delay for every subsequest letter.
         let titleText = "⚡️FlashChat"
         for letter in titleText { // This is a for loop
@@ -24,7 +28,7 @@ class WelcomeViewController: UIViewController {
             }
             charIndex += 1
             // THE ABOVE CODE IS HELPING US TO CREATE A TYPING ANIMATION WHEN THE USER OPENS THE APP.
-            
+
         }
 
        
