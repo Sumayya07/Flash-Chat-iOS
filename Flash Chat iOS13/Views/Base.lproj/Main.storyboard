@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -305,7 +306,9 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="ule-T7-Irb"/>
                                         </constraints>
                                         <color key="tintColor" name="BrandLightPurple"/>
-                                        <state key="normal" image="paperplane.fill" catalog="system"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="paperplane.fill" catalog="system" renderingMode="original"/>
+                                        </state>
                                         <connections>
                                             <action selector="sendPressed:" destination="lwd-AH-u8E" eventType="touchUpInside" id="GuM-yU-UjQ"/>
                                         </connections>
