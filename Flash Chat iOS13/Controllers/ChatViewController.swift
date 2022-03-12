@@ -32,6 +32,8 @@ class ChatViewController: UIViewController {
         
         title = K.appName
         navigationItem.hidesBackButton = true
+        
+        tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
 
     }
     
@@ -58,7 +60,8 @@ extension ChatViewController: UITableViewDataSource { // TabelviewDatasource is 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath)
-        cell.textLabel?.text = messages[indexPath.row].body
+        as! MessageCell // as! keyword is used here to cast the reusable cell as a message cell class
+        cell.label.text = messages[indexPath.row].body
         return cell
     }
     // This means when our table view loads up its going to make a request for data
