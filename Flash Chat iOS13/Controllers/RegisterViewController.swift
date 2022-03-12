@@ -23,7 +23,7 @@ class RegisterViewController: UIViewController {
                 print(e.localizedDescription) // This will display error in the language user has specified in their phone.
             } else {
                 // Navigate to chat view controller. through segue
-                self.performSegue(withIdentifier: "RegisterToChat", sender: self)
+                self.performSegue(withIdentifier: K.registerSegue, sender: self)
             }
              }
         }

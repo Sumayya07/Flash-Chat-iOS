@@ -21,7 +21,7 @@ class WelcomeViewController: UIViewController {
         titleLabel.text = ""
 
         var charIndex = 0.0 // This variable is helping us to change the timer interval so that it take accounts a delay for every subsequest letter.
-        let titleText = "⚡️FlashChat"
+        let titleText = K.appName
         for letter in titleText { // This is a for loop
             Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { (Timer) in
                 self.titleLabel.text?.append(letter) // For every letter in the title text Timer property schedules a timer that waits for 0.1 second and then it adds the letter to our titlelabel.text.
