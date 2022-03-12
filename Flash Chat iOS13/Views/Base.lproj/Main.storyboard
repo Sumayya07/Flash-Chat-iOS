@@ -307,7 +307,7 @@
                                         </constraints>
                                         <color key="tintColor" name="BrandLightPurple"/>
                                         <state key="normal">
-                                            <imageReference key="image" image="paperplane.fill" catalog="system" renderingMode="original"/>
+                                            <imageReference key="image" image="paperplane.fill" catalog="system" symbolScale="large" renderingMode="original"/>
                                         </state>
                                         <connections>
                                             <action selector="sendPressed:" destination="lwd-AH-u8E" eventType="touchUpInside" id="GuM-yU-UjQ"/>
