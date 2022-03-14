@@ -16,7 +16,7 @@
       ],
       "color" : {
         "platform" : "ios",
-        "reference" : "systemBackgroundColor"
+        "reference" : "tertiarySystemBackgroundColor"
       },
       "idiom" : "universal"
     }
