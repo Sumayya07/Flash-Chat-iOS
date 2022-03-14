@@ -19,9 +19,7 @@ class ChatViewController: UIViewController {
     
     
     var messages: [Message] = [
-        Message(sender: "saeem92@flashchat.com", body: "Hey!"),
-        Message(sender: "saeem92@flashchat.com", body: "Hello!"),
-        Message(sender: "saeem92@flashchat.com", body: "What's up?")
+        Message(sender: "saeem92@flashchat.com", body: "Hey!")
     ]
     // I have created a new variable above called messages which will contain an array of message objects.
     
@@ -38,7 +36,6 @@ class ChatViewController: UIViewController {
         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
         
         loadMessages()
-
     }
     
     func loadMessages() {
@@ -48,7 +45,7 @@ class ChatViewController: UIViewController {
             .addSnapshotListener { (querySnapshot, error) in
             self.messages = []
             if let e = error {
-                print("There is an issue retrieving data from Firestore. \(e)")
+                print("Fix an issue if there is an error inside the message database. \(e)")
             } else {
                 if let snapshotDocuments = querySnapshot?.documents{
                     for doc in snapshotDocuments {
@@ -58,6 +55,9 @@ class ChatViewController: UIViewController {
                            self.messages.append(newMessage)
                            DispatchQueue.main.async {
                                self.tableView.reloadData() // This will be able to tap into the tableview and trigger those data source methods again. and as we are inside a closure we have to add self keyword.
+                               let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+                               
+                               self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
                            }
                           
                         }
@@ -76,6 +76,11 @@ class ChatViewController: UIViewController {
                     print("There was an issue saving data to firestore, \(e)")
                 } else {
                     print("Successfully Saved Data")
+                    
+                    DispatchQueue.main.async {
+                        self.messageTextfield.text = ""
+                    }
+                    
                 }
             }
         }
@@ -100,10 +105,25 @@ extension ChatViewController: UITableViewDataSource { // TabelviewDatasource is 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let message = messages[indexPath.row]
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath)
         as! MessageCell // as! keyword is used here to cast the reusable cell as a message cell class
-        cell.label.text = messages[indexPath.row].body
-        return cell
+        cell.label.text = message.body
+        
+        // This is a message from the current user.
+        if message.sender == Auth.auth().currentUser?.email{
+            cell.leftImageView.isHidden = true
+            cell.rightImageView.isHidden = false
+            cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.green)
+        } // This is a message from another sender
+        else {
+            cell.leftImageView.isHidden = false
+            cell.rightImageView.isHidden = true
+            cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.grey)
+        }
+      return cell
     }
     // This means when our table view loads up its going to make a request for data
     
