@@ -10,3 +10,8 @@ I have used a service called Firebase Firestore as a backend database to store a
  <img src="https://user-images.githubusercontent.com/93969890/158250954-04f90753-d822-4469-8c3b-13ea557a69fb.png" width="22%">
   <img src="https://user-images.githubusercontent.com/93969890/158252116-e64f0987-52ad-4f77-b107-b51f1e9dadef.png" width="22%">
 </p>
+
+<p align="center">
+
+<img src="https://user-images.githubusercontent.com/93969890/158257694-28c7a56c-feab-4bbc-b41d-b68c42faa6bf.mov" width="40%">
+ </p>
